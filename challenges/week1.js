@@ -44,32 +44,49 @@ function reverseWord(word) {
 }
 
 
-
-
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   let newArr = []
   words.forEach(function (word) {
-    word = word.split("").reverse().join("");
-    newArr.push(word)
+    reversedWord = word.split("").reverse().join("");
+    newArr.push(reversedWord);
   })
-  console.log(newArr)
+  console.log(newArr);
 }
 
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here! THERE ARE CLUES ON HARRIET'S VIDEO!
+  let total = 0
+  users.forEach(function (user) {
+    const osType = user.type
+    if (osType === "Linux") {
+      total += 1;
+    }
+  })
+  return total;
 }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+  let sum = 0
+  scores.forEach(function (score) {
+    sum = sum + score
+  })
+  return Math.round((sum / scores.length) * 100) / 100
 }
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
+  if (n % 3 === 0 && n % 5 === 0) {
+    return "fizzbuzz"
+  } else if (n % 3 !== 0 && n % 5 !== 0) {
+    return n
+  } else if (n % 3 === 0) {
+    return "fizz"
+  } else if (n % 5 === 0) {
+    return "buzz"
+  }
 }
 
 module.exports = {
