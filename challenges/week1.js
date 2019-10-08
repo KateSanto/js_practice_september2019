@@ -40,17 +40,26 @@ function getMiddleCharacter(str) {
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  return word.split("").reverse().join("");
 }
+
+
+
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+  let newArr = []
+  words.forEach(function (word) {
+    word = word.split("").reverse().join("");
+    newArr.push(word)
+  })
+  console.log(newArr)
 }
+
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+  // Add your code here! THERE ARE CLUES ON HARRIET'S VIDEO!
 }
 
 function getMeanScore(scores) {
