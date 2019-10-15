@@ -51,9 +51,8 @@ function reverseAllWords(words) {
     reversedWord = word.split("").reverse().join("");
     newArr.push(reversedWord);
   })
-  console.log(newArr);
+  return newArr;
 }
-
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");

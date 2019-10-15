@@ -1,21 +1,33 @@
 function getFillings(sandwich) {
   if (sandwich === undefined) throw new Error("ingredients is required");
-  // Your code here!
+  return Object.values(sandwich.fillings)
 }
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+  let checkCity = false
+  for (let key in person) {
+    if (person[key] === "Manchester") {
+      checkCity = true
+    }
+  }
+  return checkCity;
 }
 
 function getBusNumbers(people) {
   if (people === undefined) throw new Error("people is required");
-  // Your code here!
+  return (Math.ceil(people / 40))
 }
 
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  let count = 0
+  arr.forEach(function (animal) {
+    if (animal === "sheep") {
+      count = count + 1
+    }
+  })
+  return count
 }
 
 function hasMPostCode(person) {
