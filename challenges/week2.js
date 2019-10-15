@@ -1,13 +1,13 @@
 function getFillings(sandwich) {
   if (sandwich === undefined) throw new Error("ingredients is required");
-  return Object.values(sandwich.fillings)
+  return sandwich.fillings
 }
 
 function isFromManchester(person) {
   if (person === undefined) throw new Error("person is required");
   let checkCity = false
   for (let key in person) {
-    if (person[key] === "Manchester") {
+    if (person.city === "Manchester") {
       checkCity = true
     }
   }
@@ -32,7 +32,13 @@ function countSheep(arr) {
 
 function hasMPostCode(person) {
   if (person === undefined) throw new Error("person is required");
-  // Your code here!
+  for (let key in person) {
+  if (person.address.city === "Manchester" && person.address.postCode[0] === "M") {
+    return true
+    } else {
+      return false
+      }
+  }
 }
 
 module.exports = {

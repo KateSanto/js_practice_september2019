@@ -38,7 +38,8 @@ describe("isFromManchester", () => {
     const person = {
       name: "Anisa",
       city: "Leeds",
-      age: 39
+      age: 39,
+      favouriteTown: "Manchester" //added this line to improve my solution
     };
     expect(isFromManchester(person)).toBe(false);
   });
