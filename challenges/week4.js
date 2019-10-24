@@ -1,12 +1,26 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  const smallNumsOnly = nums.filter(function (num) {
+    if (num < 1) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return smallNumsOnly;
 }
 
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // Your code here
+const correctNamesOnly = names.filter(function (name) {
+  if (name[0] === char) {
+    return true
+  } else {
+    return false;
+  }
+})
+return correctNamesOnly;
 }
 
 function findVerbs(words) {

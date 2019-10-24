@@ -31,16 +31,16 @@ function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
   let ingredientFound = false
-  menu.forEach(function (ingredient) {
-    ingredient.ingredients.forEach(function (menuItemIngredient) {
+  menu.forEach(function (menuItem) {
+    menuItem.ingredients.forEach(function (menuItemIngredient) {
       if (menuItemIngredient === ingredient) {
         ingredientFound = true;
       }
     })
-    return ingredientFound;
-  })
 
-} //followed Harriet's video, but one test not passing. Check with James on Thursday.
+  })
+  return ingredientFound;
+}
 
 
 function duplicateNumbers(arr1, arr2) {
@@ -66,4 +66,4 @@ module.exports = {
   getTotalSubjects,
   checkIngredients,
   duplicateNumbers
-};
+}
