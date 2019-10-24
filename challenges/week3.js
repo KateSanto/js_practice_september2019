@@ -6,7 +6,16 @@ function getSquares(nums) {
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Work so far in: https://repl.it/repls/SubstantialFreshDictionaries
+  let firstString = words.splice(0, 1);
+  let laterStrings = words.splice(0);
+  let restOfArray = [];
+
+  laterStrings.forEach(function (word) {
+    let capitalisedWord = word.charAt(0).toUpperCase() + word.slice(1)
+    restOfArray.push(capitalisedWord);
+  })
+  let camelCasedArray = (firstString + restOfArray).replace(/,/g, "");
+  return camelCasedArray;
 }
 
 function getTotalSubjects(people) {
@@ -16,7 +25,6 @@ function getTotalSubjects(people) {
     subjects = subjects + person.subjects.length
   })
   return subjects;
-
 }
 
 function checkIngredients(menu, ingredient) {
@@ -24,22 +32,32 @@ function checkIngredients(menu, ingredient) {
   if (!ingredient) throw new Error("ingredient is required");
   let ingredientFound = false
   menu.forEach(function (ingredient) {
-    for (let key in Object) {
-      if (Object.ingredients.includes(ingredient)) {
+    ingredient.ingredients.forEach(function (menuItemIngredient) {
+      if (menuItemIngredient === ingredient) {
         ingredientFound = true;
       }
-    }
-
+    })
+    return ingredientFound;
   })
-  console.log(ingredientFound);
 
-} //Doesn't work yet. This is work in progress.
+} //followed Harriet's video, but one test not passing. Check with James on Thursday.
 
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Still working on it here: https://repl.it/repls/LightyellowPuzzlingPercent
+  const duplicates = [];
+  arr1.forEach(function (num) {
+    arr2.forEach(function (num2) {
+      if (num === num2) {
+        const duplicatesContainsNum = duplicates.includes(num);
+        if (duplicatesContainsNum === false) {
+          duplicates.push(num2);
+        }
+      };
+    });
+  });
+  return duplicates.sort();
 }
 
 module.exports = {
