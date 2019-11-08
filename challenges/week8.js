@@ -1,3 +1,4 @@
+//fails 2 tests. Need to think about it more//
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
@@ -11,22 +12,44 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  let count0s = 0;
+  let count1s = 0;
+  stringed = str.split('');
+  stringed.forEach((number) => {
+    if (Number(number) === 0) {
+      count0s = count0s + 1
+    } else if (Number(number) === 1) {
+      count1s = count1s + 1
+    }
+  })
+  return { 1: count1s, 0: count0s }
 };
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
+
+  return Number(n.toString().split("").reverse().join(""))
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
+  let sum = 0;
+  arrs.forEach((array) => {
+    array.forEach((number) => {
+      sum = sum + number
+    })
+  })
+  return sum
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
+  if (arr.length < 2) return arr
+  let firstItem = arr.shift();
+  let lastItem = arr.pop();
+  arr.unshift(lastItem)
+  arr.push(firstItem);
+  return arr
 };
 
 
