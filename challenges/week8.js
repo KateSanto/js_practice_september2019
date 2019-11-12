@@ -1,13 +1,18 @@
-//fails 2 tests. Need to think about it more//
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   let found = nums.find(function (element) {
     return element === n;
   });
-
-  let relevantIndex = nums.indexOf(found) + 1
-  return nums[relevantIndex]
+  if (found === undefined) {
+    return null
+  }
+  if (nums.indexOf(found) === nums.length - 1) {
+    return null
+  } else {
+    let relevantIndex = nums.indexOf(found) + 1
+    return nums[relevantIndex]
+  }
 };
 
 const count1sand0s = str => {
@@ -53,20 +58,47 @@ const arrShift = arr => {
 };
 
 
-/*To solve the final 2 challenges, you might first want to watch 
-[this video](https://storage.googleapis.com/tech-returners-course/JavaScript_Challenges/advanced_objects.mp4) 
-where Harriet looks at some advanced things we can do with Objects.*/
-
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
-};
+  let found = false;
+  let allKeys = []
+  let allValues = []
+
+  for (let key in haystack) {
+    allKeys.push(key)
+    allValues.push(haystack[key])
+  }
+
+  allKeys.forEach((key) => {
+    if (key.toUpperCase().includes(searchTerm.toUpperCase())) {
+      found = true
+    }
+  })
+
+  allValues.forEach((value) => {
+    if (value.toString().toUpperCase().includes(searchTerm.toUpperCase())) {
+      found = true
+    }
+  })
+
+  return found
+}
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
-};
+  const repetitions = {};
+  const splitWords = str.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(" ")
+  for (let i = 0; i < splitWords.length; i++) {
+    const word = splitWords[i];
+    if (repetitions[word] === undefined) {
+      repetitions[word] = 1;
+    } else {
+      repetitions[word] += 1;
+    }
+  }
+  return repetitions
+}
 
 module.exports = {
   findNextNumber,

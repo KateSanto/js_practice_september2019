@@ -8,7 +8,7 @@ const {
   getWordFrequencies
 } = require("../challenges/week8");
 
-describe("findNextNumber", () => {
+describe.only("findNextNumber", () => {
   test("returns the next number after the given number in the array", () => {
     expect(findNextNumber([5, 3, 7, 8, 1, 10], 7)).toBe(8);
     expect(findNextNumber([5, 3, 7, 8, 1, 10], 1)).toBe(10);
@@ -68,7 +68,7 @@ describe("sumArrays", () => {
   });
 });
 
-describe.only("arrShift", () => {
+describe("arrShift", () => {
   test("returns an array with the first and last items swapped", () => {
     expect(arrShift([1, 2])).toEqual([2, 1]);
     expect(arrShift([1, 2, 3])).toEqual([3, 2, 1]);
