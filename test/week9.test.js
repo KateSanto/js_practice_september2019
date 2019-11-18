@@ -76,3 +76,47 @@ describe("getComplementaryDNA", () => {
     })
 });
 
+describe("isItPrime", () => {
+    test("This function should receive a number and return true/false depending on whether it is a prime number or not. A prime number is a number that can only be divided evenly by 1 and itself (for example, 7)", () => {
+        const result = isItPrime(5);
+        const expected = true;
+        expect(result).toBe(expected);
+    })
+    test("Should return false if number is not prime", () => {
+        const result = isItPrime(4);
+        const expected = false;
+        expect(result).toBe(expected);
+    })
+    test("Should return false if number is not prime", () => {
+        const result = isItPrime(127);
+        const expected = true;
+        expect(result).toBe(expected);
+    })
+});
+
+describe("createMatrix", () => {
+    test("This function should receive a number and return an array of n arrays, each filled with n items. The parameter 'fill' should be used as the filler of the arrays.", () => {
+        const result = createMatrix(3, "foo");
+        const expected = [["foo", "foo", "foo"], ["foo", "foo", "foo"], ["foo", "foo", "foo"]];
+        expect(result).toEqual(expected);
+    })
+
+    test("works with just one n", () => {
+        const result = createMatrix(1, "foo");
+        const expected = [["foo"]];
+        expect(result).toEqual(expected);
+    })
+
+    test("works with just one n", () => {
+        const result = createMatrix(10, "foo");
+        const expected = [["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"], ["foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo", "foo"]];
+        expect(result).toEqual(expected);
+    })
+})
+
+
+
+
+
+
+
