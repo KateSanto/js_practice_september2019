@@ -114,7 +114,21 @@ describe("createMatrix", () => {
     })
 })
 
+describe("areWeCovered", () => {
+test("This function takes an array of objects (staff) and and a day of the week. For the café to run successfully, at least 3 staff members are required per day. The function should return true/false depending on whether there are enough staff scheduled for the given day.", () => {
+    const result = areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] }, { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] }, { name: "Peter", rota: ["Tuesday", "Wednesday", "Thursday", "Friday"] }])
+    const expected = true;
+    expect(result).toBe(expected);
+})
 
+test("This function should return false if there aren't enough staff on a given day", () => {
+    const result = areWeCovered([{ name: "Sally", rota: ["Monday", "Tuesday", "Friday"] }, { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] }, { name: "Peter", rota: ["Sunday"] }])
+    const expected = false;
+    expect(result).toBe(expected);
+})
+
+
+})
 
 
 
