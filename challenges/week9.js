@@ -89,12 +89,12 @@ const createMatrix = (n, fill) => {
   let completeFill = fill + " ";
   let internalArray = completeFill.repeat(n).split(" ");
   let popped = internalArray.pop()
-   let matrix = [];
+  let matrix = [];
   let length = n;
-for (let i = 0; i < length; i++) {
-  matrix.push(internalArray);
-}
-return matrix; 
+  for (let i = 0; i < length; i++) {
+    matrix.push(internalArray);
+  }
+  return matrix;
 }
 
 /**
@@ -112,10 +112,20 @@ return matrix;
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
-
-  //still working on it in https://repl.it/repls/LightyellowPuzzlingPercent //
-  
-};
+  let count = 0;
+  staff.forEach(function (employee) {
+    for (let key in employee) {
+      if (employee[key].includes(day)) {
+        count += 1;
+      }
+    }
+  });
+  if (count >= 3) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 module.exports = {
   sumMultiples,
