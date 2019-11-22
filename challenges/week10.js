@@ -5,14 +5,14 @@
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
 
-let sum = n.toString().split("").map(Number).reduce(function (a, b) {
-  return a + b;
-}, 0);
-return sum;
+  let sum = n.toString().split("").map(Number).reduce(function (a, b) {
+    return a + b;
+  }, 0);
+  return sum;
 };
 
 /**
- * This function creates a range of numbers as an array. It received a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
+ * This function creates a range of numbers as an array. It receives a start, an end and a step. Step is the gap between numbers in the range. For example, if start = 3, end = 11 and step = 2 the resulting range would be: [3, 5, 7, 9, 11]
  * Both the start and the end numbers are inclusive.
  * Step is an optional parameter. If it is not provided, assume the step is 1.
  * @param {Number} start
@@ -22,6 +22,12 @@ return sum;
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (step === undefined) { step = 1 };
+  let result = []
+  for (let i = start; i < end + 1; i += step) {
+    result.push(i);
+  }
+  return result;
 };
 
 /**
@@ -56,6 +62,25 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let sumOfMinutes = 0;
+  let tooMuchScreenUsers = [];
+  users.forEach(function (user) {
+    for (let key in user) {
+      if (key === "screenTime") {
+        user.screenTime.forEach(function (dateObject) {
+          if (dateObject.date === date) {
+            for (let key in dateObject.usage) {
+              sumOfMinutes = sumOfMinutes + dateObject.usage[key];
+            }
+            if (sumOfMinutes > 100) {
+              tooMuchScreenUsers.push(user.username)
+            }
+          }
+        })
+      }
+    }
+  })
+  return tooMuchScreenUsers;
 };
 
 /**
@@ -70,6 +95,12 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+let removeHash = hexStr.replace(/[^\w\s]/gi, '');
+let arrayedHex = removeHash.split("");
+let firstPair = arrayedHex[0] + arrayedHex[1];
+let secondPair = arrayedHex[2] + arrayedHex[3];
+let thirdPair = arrayedHex[4] + arrayedHex[5];
+return("rgb(" + parseInt(firstPair, 16) + "," + parseInt(secondPair, 16) + "," + parseInt(thirdPair, 16) + ")")
 };
 
 /**
