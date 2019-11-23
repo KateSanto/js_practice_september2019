@@ -24,7 +24,6 @@ const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
   let result = false;
   for (let i = 0; i < str.length; i++) {
-    console.log(str.charAt(i))
     if (str.charAt(i).toLowerCase() === "c" || str.charAt(i).toLowerCase() === "g" || str.charAt(i).toLowerCase() === "t" || str.charAt(i).toLowerCase() === "a") {
       result = true
     } else {
@@ -43,7 +42,6 @@ const isValidDNA = str => {
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   let strToArray = str.split("");
-  console.log(strToArray);
   const newArr = strToArray.map(function (char) {
     if (char.toUpperCase() == "T") {
       return "A"

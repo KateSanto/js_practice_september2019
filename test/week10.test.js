@@ -88,7 +88,29 @@ describe("hexToRGB", () => {
         expect(result).toBe(expected);
     })
 
-    //  WRITE ANOTHER TEST OR TWO (FUNCTION WORKS NOW WITH JUST ONE TEST)
+    test("Works with different combination of digits", () => {
+        const result = hexToRGB("#ffffff");
+        const expected = "rgb(255,255,255)";
+        expect(result).toBe(expected);
+    })
+})
 
+describe("findWinner", () => {
+    test("This function takes a noughts and crosses board and says whether noughts or crosses have won", () => {
+        const result = findWinner([["X", "0", null], ["X", null, "0"], ["X", null, "0"]]);
+        const expected = "X";
+        expect(result).toBe(expected);
+    })
 
+    test("Returns null if there's no winner", () => {
+        const result = findWinner([["X", "0", null], ["0", null, "0"], ["X", null, "0"]]);
+        const expected = null;
+        expect(result).toBe(expected);
+    })
+
+    test("Returns null if wrong string provided", () => {
+        const result = findWinner([["P", "0", null], ["0", null, "0"], ["X", null, "0"]]);
+        const expected = null;
+        expect(result).toBe(expected);
+    })
 })
